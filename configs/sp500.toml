@@ -1,0 +1,30 @@
+[dataset]
+path = "data/processed/sp500_full.npz"
+lookback = 10
+
+[backtest]
+transaction_cost = 0.001
+train_ratio = 0.0
+val_ratio = 0.0
+test_ratio = 1.0
+
+[llm]
+model = "qwen3:1.7b"
+base_url = "http://localhost:11434"
+temperature = 0
+multiline = false
+
+[bootstrap]
+enabled = false
+n_bootstrap = 1000
+confidence_level = 0.95
+seed = 42
+
+[dro]
+enabled = true
+eta = 0.05
+epsilon = 0.1
+rho = 1.0
+# support_radius not set (uses default)
+solver_method = "conic"
+solver = "ECOS"

@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "portfolio-bench"
+version = "0.1.0"
+description = "FAIR experimental benchmark comparing OR and LLM methods for portfolio allocation"
+authors = ["Portfolio Bench Contributors"]
+readme = "README.md"
+packages = [{include = "portfolio_bench", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.26"
+pandas = "^2.1"
+scipy = "^1.11"
+cvxpy = "^1.4"
+osqp = ">=0.6"
+ecos = ">=2.0"
+typer = ">=0.9"
+rich = "^13.7"
+requests = "^2.31"
+tomli = "^2.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4"
+ruff = "^0.1"
+
+[tool.poetry.scripts]
+portfolio-bench = "portfolio_bench.cli:app"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
